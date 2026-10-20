@@ -179,7 +179,7 @@ const templateHtml = fs.readFileSync(path.join(__dirname, '..', 'index.html'), '
 const html = G.buildPreviewHtml(templateHtml, EXAMPLE);
 
 ok('build: noindex robots + googlebot meta injected after viewport',
-  html.indexOf('content="width=device-width, initial-scale=1.0">\r\n  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">') !== -1 &&
+  /content="width=device-width, initial-scale=1\.0">\r?\n  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">/.test(html) &&
   html.indexOf('<meta name="googlebot" content="noindex,nofollow,noarchive,nosnippet">') !== -1);
 
 ok('build: noindex not duplicated when already present',
