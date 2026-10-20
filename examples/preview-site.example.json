@@ -1,0 +1,215 @@
+{
+  "$comment": "Canonical preview-site record example (Preview Site Generator MVP). Built from the current Cascade Home Remodeling template content. Schema: src/types/preview-site.ts — Docs: docs/preview-site-data-model.md. claims, projects, and reviews are intentionally empty (honest-copy rule: no invented proof content); their sections and nav links stay hidden.",
+  "id": "preview_example_cascade_home_remodeling",
+  "slug": "cascade-home-remodeling-bend-or",
+  "status": "ready",
+  "template": {
+    "id": "remodeling-contractor-v1",
+    "name": "Remodeling Contractor One-Pager",
+    "version": "1.0.0"
+  },
+  "campaign": {
+    "id": "campaign_bend_or_home_services_2026_10",
+    "name": "Bend OR Home Services Outreach — Oct 2026",
+    "generatedAt": "2026-10-09T09:00:00.000Z",
+    "source": "csv_import",
+    "offerSnapshot": {
+      "price": 500,
+      "currency": "USD",
+      "priceLabel": "$500",
+      "offerName": "Starter one-page launch",
+      "primaryCta": "Launch for $500",
+      "secondaryCta": "Ask a Question",
+      "termsLabel": "One revision pass included before launch"
+    }
+  },
+  "business": {
+    "name": "Cascade Home Remodeling",
+    "city": "Bend",
+    "state": "OR",
+    "stateName": "Oregon",
+    "trade": "remodeling",
+    "category": "Kitchen & Bath Remodeler",
+    "niche": "residential remodeling",
+    "phone": "541-555-0198",
+    "phoneHref": "tel:5415550198"
+  },
+  "contact": {
+    "notificationEmail": "",
+    "formAction": "",
+    "turnstileSiteKey": "",
+    "leadSource": "preview-drawer-question-form",
+    "fallbackContactMethod": "phone"
+  },
+  "tracking": {
+    "siteId": "preview_example_cascade_home_remodeling",
+    "formId": "question_main"
+  },
+  "meta": {
+    "title": "Cascade Home Remodeling — Bend, Oregon (Preview)",
+    "description": "Kitchen, bathroom, and whole-home remodeling for Bend, Oregon homeowners. Clear estimates, clean job sites, and a smoother renovation experience."
+  },
+  "banner": {
+    "desktopText": "Preview prepared for Cascade Home Remodeling. Like this direction?",
+    "mobileText": "Like this direction?"
+  },
+  "header": {
+    "wordmarkLabel": "Cascade Home Remodeling — home"
+  },
+  "hero": {
+    "eyebrow": "Kitchen · Bath · Whole-Home",
+    "headline": "Beautiful, <em>practical</em> remodeling for Bend homeowners.",
+    "lede": "Kitchen, bathroom, and whole-home updates designed around clear communication, clean workmanship, and a smoother renovation experience.",
+    "badgeTitle": "Free estimates",
+    "badgeSub": "Honest scope, clear pricing"
+  },
+  "images": {
+    "$comment": "Image slots (JUS-52). Resolution at render time: prospect override -> template default -> styled placeholder. hero shows a prospect override (neutral alt); projectKitchen is alt-only (placeholder url); projectFeatured is omitted entirely; empty objects resolve to placeholders. Alt text stays generic unless the photo really is the business's — never implies a pictured project was completed by them.",
+    "hero": {
+      "url": "https://images.example.com/cascade-hero.jpg",
+      "alt": "Home remodeling inspiration image",
+      "notes": "Illustrative override — schema example only."
+    },
+    "projectKitchen": {
+      "alt": "Kitchen remodeling inspiration image"
+    },
+    "projectBath": {},
+    "projectWholeHome": {}
+  },
+  "claims": [],
+  "services": {
+    "eyebrow": "What we do",
+    "title": "Remodeling, handled with care.",
+    "lede": "Focused services for homeowners who want the work done right — without the runaround.",
+    "items": [
+      {
+        "id": "svc_kitchen_remodeling",
+        "icon": "kitchen",
+        "title": "Kitchen Remodeling",
+        "summary": "Thoughtful kitchen updates designed around better flow, storage, finishes, and everyday function.",
+        "detailTitle": "Kitchen remodels, planned around how you cook",
+        "detailCopy": "From refreshed surfaces to full layout changes, we plan the work around your routines — clear timelines, contained dust, and a space that works better the moment it’s done.",
+        "includes": [
+          "Cabinet refacing or replacement",
+          "Countertop and backsplash installation",
+          "Island and pantry additions",
+          "Lighting and fixture updates"
+        ],
+        "goodFit": "A good fit if your layout works but the finishes, storage, or workflow no longer do."
+      },
+      {
+        "id": "svc_bathroom_remodeling",
+        "icon": "bathroom",
+        "title": "Bathroom Remodeling",
+        "summary": "Refresh your bathroom with cleaner layouts, updated surfaces, improved fixtures, and a more comfortable feel.",
+        "detailTitle": "Bathrooms that stay practical and feel finished",
+        "detailCopy": "We handle the details that make a bathroom last — proper waterproofing, ventilation, and surfaces that are easy to keep clean — with a schedule you can plan around.",
+        "includes": [
+          "Tub and shower replacements",
+          "Vanity and storage upgrades",
+          "Tile and waterproofing",
+          "Accessibility-friendly fixtures"
+        ],
+        "goodFit": "A good fit if you want a bathroom that works better day to day, not just a new look."
+      },
+      {
+        "id": "svc_whole_home_updates",
+        "icon": "whole-home",
+        "title": "Whole-Home Updates",
+        "summary": "Modernize key areas of your home with coordinated improvements that make the space feel more complete.",
+        "detailTitle": "Coordinated updates, one schedule",
+        "detailCopy": "Instead of juggling separate contractors, we sequence flooring, trim, lighting, and room-by-room updates under one plan — so the house stays livable and the work stays on track.",
+        "includes": [
+          "Flooring and trim replacement",
+          "Interior paint and lighting",
+          "Room-by-room refreshes",
+          "Pre-listing updates"
+        ],
+        "goodFit": "A good fit if several areas need attention at once and you want one team coordinating it."
+      }
+    ]
+  },
+  "projects": {
+    "mode": "hidden",
+    "items": []
+  },
+  "process": {
+    "eyebrow": "How it works",
+    "title": "A simple, straightforward process.",
+    "steps": [
+      {
+        "id": "step_request_estimate",
+        "title": "Request an Estimate",
+        "copy": "Tell us what you’re hoping to improve and the best way to reach you."
+      },
+      {
+        "id": "step_walk_through",
+        "title": "Walk Through the Project",
+        "copy": "We review the space, goals, timeline, and details that matter most."
+      },
+      {
+        "id": "step_review_proposal",
+        "title": "Review a Clear Proposal",
+        "copy": "You get a straightforward scope so you can make a confident decision."
+      },
+      {
+        "id": "step_schedule_work",
+        "title": "Schedule the Work",
+        "copy": "Once approved, we coordinate the next steps and keep the project moving."
+      }
+    ]
+  },
+  "reviews": {
+    "items": []
+  },
+  "serviceArea": {
+    "lede": "Cascade Home Remodeling works with homeowners throughout Bend and the surrounding area.",
+    "communities": [
+      "Bend",
+      "Redmond",
+      "Sisters",
+      "Sunriver",
+      "Tumalo",
+      "La Pine"
+    ]
+  },
+  "finalCta": {
+    "eyebrow": "Free estimates · Bend, Oregon",
+    "headline": "Ready to talk about your remodel?",
+    "copy": "Tell us what you have in mind and we’ll help you take the next step.",
+    "micro": "No pressure, no obligation — just a clear next step."
+  },
+  "ownerOffer": {
+    "eyebrow": "Launch offer",
+    "title": "Make this site yours",
+    "sub": "Launch this one-page starter site for $500.",
+    "perks": [
+      "One-page mobile-friendly website",
+      "Your confirmed business details added",
+      "Services, photos, phone, and call-to-action setup",
+      "Mobile and desktop polish",
+      "One revision pass before launch",
+      "Quick kickoff call after purchase"
+    ],
+    "primaryCta": "Launch for $500",
+    "secondaryCta": "Ask a Question",
+    "note": "After checkout, we’ll schedule a short kickoff call to confirm your details, final copy, photos, and launch preferences.",
+    "reassure": "Final content, images, and business details will be confirmed before launch."
+  },
+  "visibility": {
+    "claims": false,
+    "services": true,
+    "projects": false,
+    "process": true,
+    "reviews": false,
+    "serviceAreaChips": true
+  },
+  "metadata": {
+    "createdAt": "2026-10-09T09:00:00.000Z",
+    "updatedAt": "2026-10-09T09:00:00.000Z",
+    "notes": "Canonical-schema example mapped from the live Cascade template content. claims/projects/reviews are intentionally empty and remain hidden (honest-copy rule).",
+    "flags": [
+      "example"
+    ]
+  }
+}

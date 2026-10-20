@@ -1,0 +1,86 @@
+# ---------------------------------------------------------------------------
+# SMB Website Design Program — .gitignore
+#
+# Layout: source is tracked; everything generated or private stays local.
+# docs/github-handoff.md explains the exact commit steps.
+# ---------------------------------------------------------------------------
+
+# --- Git plumbing (in case Git is initialized at project root later) ---
+.git/
+
+# --- Generated preview output (rebuildable: scripts/generate-preview.js) ---
+# dist/ is never source. Generated pages embed prospect records and must not
+# be published to the repository even after the records are deleted locally.
+dist/
+
+# --- Private business records (real prospects/customers) ---
+# records/ is the local-only convention for private PreviewSiteRecord JSON
+# files. NEVER track real business records here. Synthetic, commit-safe
+# fixtures live in examples/ (preview-site.example.json is intentionally
+# empty of real data; preview-site.test-plumbing.json is explicitly labeled
+# test-data in its $comment — never for outreach).
+# The one tracked exception is records/LOCAL-ONLY.md — the warning sign
+# itself stays in the repo so the convention travels with it.
+records/*
+!records/LOCAL-ONLY.md
+*.private.json
+*.private.*
+
+# --- Secrets / environment ---
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*_rsa
+*_ed25519
+secrets*.json
+!secrets.example.json
+
+# --- Dependencies / toolchains (none are committed today, but ignore anyway) ---
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# --- Logs / temp / scratch ---
+*.log
+logs/
+*.tmp
+~$*
+*.bak
+j60_*.txt
+j*.txt
+probe*.txt
+scratch/
+out*.txt
+
+# --- Browser-test artifacts (headless Edge profiles, screenshots, dumps) ---
+test-artifacts/
+screenshots/
+.cdp/
+*.png
+*.jpg.tmp
+
+# --- OS / editor junk ---
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# --- Editors / IDE ---
+.vscode/
+.idea/
+
+# --- Workshop agent state (per-machine context, not project source) ---
+.workshop/
+
+# --- Agent task-tracking bundles (per-machine planning state) ---
+plans/
+
+# IMPORTANT: .gitignore does NOT affect files Git already tracks.
+# Before the first commit, confirm with:
+#   git ls-files --  .
+# (Expected: empty before handoff. See docs/github-handoff.md.)

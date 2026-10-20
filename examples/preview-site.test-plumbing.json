@@ -1,0 +1,215 @@
+{
+  "$comment": "QA gate test record (Preview Site Generator MVP). POPULATED honest-copy path: real-shaped claims, projects, and reviews so the QA gate (scripts/qa-preview.js) can verify sections that SHOULD be visible render correctly. NEVER send a preview generated from this record to a prospect — it exists to test the gate and the template. Distinct business/slug from preview-site.example.json so the two QA paths never overwrite each other's output.",
+  "schemaVersion": "1.0.0",
+  "id": "preview_test_deschutes_plumbing",
+  "slug": "deschutes-plumbing-works-redmond-or",
+  "status": "needs_review",
+  "template": {
+    "id": "tpl_one_page_local_services_v1",
+    "version": "1.0.0"
+  },
+  "campaign": {
+    "id": "campaign_redmond_or_home_services_2026_10",
+    "name": "Redmond OR Home Services Outreach — Oct 2026",
+    "generatedAt": "2026-10-15T12:00:00.000Z",
+    "source": "qa_test_record",
+    "offerSnapshot": {
+      "price": 500,
+      "currency": "USD",
+      "priceLabel": "$500",
+      "offerName": "Starter one-page launch",
+      "primaryCta": "Launch for $500",
+      "secondaryCta": "Ask a Question",
+      "termsLabel": "One revision pass included before launch"
+    }
+  },
+  "business": {
+    "name": "Deschutes Plumbing Works",
+    "city": "Redmond",
+    "state": "OR",
+    "stateName": "Oregon",
+    "trade": "plumbing",
+    "category": "Plumbing Contractor",
+    "niche": "residential plumbing",
+    "phone": "541-555-0147",
+    "phoneHref": "tel:5415550147"
+  },
+  "contact": {
+    "notificationEmail": "",
+    "formAction": "",
+    "turnstileSiteKey": "",
+    "leadSource": "preview-drawer-question-form",
+    "fallbackContactMethod": "phone"
+  },
+  "tracking": {
+    "siteId": "preview_test_deschutes_plumbing",
+    "formId": "question_main",
+    "utmSource": "qa-gate"
+  },
+  "meta": {
+    "title": "Deschutes Plumbing Works — Redmond, Oregon (Preview)",
+    "description": "Reliable residential plumbing for Redmond, Oregon homeowners. Clear estimates, tidy work, and fixes that stay fixed."
+  },
+  "banner": {
+    "desktopText": "Preview prepared for Deschutes Plumbing Works. Like this direction?",
+    "mobileText": "Like this direction?"
+  },
+  "header": {
+    "wordmarkLabel": "Deschutes Plumbing Works — home"
+  },
+  "hero": {
+    "eyebrow": "Repairs · Remodels · New Construction",
+    "headline": "Plumbing done right, <em>without</em> the runaround.",
+    "lede": "From drips to full repipes, Deschutes Plumbing Works keeps Redmond homes flowing with clear quotes and clean work.",
+    "badgeTitle": "Free estimates",
+    "badgeSub": "Straight answers, clear pricing"
+  },
+  "images": {
+    "$comment": "QA test images: example.com URLs are intentionally unreachable — the gate verifies placeholder fallback + generic alt handling, not the images themselves.",
+    "hero": {
+      "url": "https://images.example.com/deschutes-hero.jpg",
+      "alt": "Plumbing inspiration image"
+    },
+    "projectKitchen": {},
+    "projectBath": {},
+    "projectWholeHome": {}
+  },
+  "claims": [
+    { "id": "claim_estimates", "label": "Free, no-pressure estimates" },
+    { "id": "claim_local", "label": "Locally owned in Redmond" },
+    { "id": "claim_cleanup", "label": "We leave the work area clean" }
+  ],
+  "services": {
+    "eyebrow": "What we fix and install",
+    "title": "Plumbing, handled with care.",
+    "lede": "From a single leaky faucet to a whole-home repipe — scoped clearly, priced upfront.",
+    "items": [
+      {
+        "id": "svc_repairs",
+        "icon": "kitchen",
+        "title": "Repairs & Fixtures",
+        "summary": "Leaks, drips, clogs, and fixture swaps fixed right the first visit.",
+        "detailTitle": "Repairs that stay fixed",
+        "detailCopy": "We find the actual cause, not just the symptom — and we quote before we touch a wrench.",
+        "includes": [
+          "Leak and drip diagnosis",
+          "Faucet and toilet replacement",
+          "Drain clearing",
+          "Water pressure fixes"
+        ],
+        "goodFit": "A good fit when something is leaking, clogged, or just not working."
+      },
+      {
+        "id": "svc_water_heaters",
+        "icon": "bathroom",
+        "title": "Water Heaters",
+        "summary": "Tank and tankless water heater service, replacement, and sizing advice.",
+        "detailTitle": "Hot water, sized right",
+        "detailCopy": "We match the heater to your household's real usage and walk you through the options before any install.",
+        "includes": [
+          "Tank replacement",
+          "Tankless upgrades",
+          "Anode and flush maintenance",
+          "Gas and electric"
+        ],
+        "goodFit": "A good fit when your heater is aging, leaking, or can't keep up."
+      },
+      {
+        "id": "svc_remodels",
+        "icon": "whole-home",
+        "title": "Remodel Plumbing",
+        "summary": "Kitchen and bath remodel plumbing coordinated with your timeline."
+      }
+    ]
+  },
+  "projects": {
+    "mode": "auto",
+    "items": [
+      {
+        "id": "proj_kitchen_repipe",
+        "label": "Whole-home repipe",
+        "caption": "Featured project",
+        "highlights": [
+          "PEX repipe, 2 baths + kitchen",
+          "Completed in 3 days"
+        ]
+      },
+      {
+        "id": "proj_bath_refresh",
+        "label": "Bath plumbing refresh",
+        "caption": "Master bath"
+      },
+      {
+        "id": "proj_kitchen_line",
+        "label": "Kitchen line relocation",
+        "caption": "Island install"
+      }
+    ]
+  },
+  "process": {
+    "eyebrow": "How it works",
+    "title": "A simple, straightforward process.",
+    "steps": [
+      { "id": "step_call", "title": "Call or Send the Form", "copy": "Describe what's going on and how to reach you." },
+      { "id": "step_quote", "title": "Get a Clear Quote", "copy": "Straightforward scope and price before any work starts." },
+      { "id": "step_fix", "title": "We Do the Work", "copy": "Tidy, on-schedule work with the area protected and cleaned." },
+      { "id": "step_walkthrough", "title": "Walk Through Together", "copy": "We confirm everything works before we call it done." }
+    ]
+  },
+  "reviews": {
+    "items": [
+      { "id": "rev_1", "quote": "Found the leak two other plumbers missed. Fair price, clean work.", "attribution": "Karen M., Redmond" },
+      { "id": "rev_2", "quote": "Replaced our water heater in one afternoon. Everything left spotless.", "attribution": "Doug and Pat, Terrebonne" }
+    ]
+  },
+  "serviceArea": {
+    "lede": "Deschutes Plumbing Works serves homeowners throughout Redmond and the surrounding area.",
+    "communities": [
+      "Redmond",
+      "Terrebonne",
+      "Bend",
+      "Sisters",
+      "Prineville"
+    ]
+  },
+  "finalCta": {
+    "eyebrow": "Free estimates · Redmond, Oregon",
+    "headline": "Ready to talk about your plumbing?",
+    "copy": "Tell us what's going on and we'll help you take the next step.",
+    "micro": "No pressure, no obligation — just a clear next step."
+  },
+  "ownerOffer": {
+    "eyebrow": "Launch offer",
+    "title": "Make this site yours",
+    "sub": "Launch this one-page starter site for $500.",
+    "perks": [
+      "One-page mobile-friendly website",
+      "Your confirmed business details added",
+      "Services, photos, phone, and call-to-action setup",
+      "Mobile and desktop polish",
+      "One revision pass before launch",
+      "Quick kickoff call after purchase"
+    ],
+    "primaryCta": "Launch for $500",
+    "secondaryCta": "Ask a Question",
+    "note": "After checkout, we'll schedule a short kickoff call to confirm your details, final copy, photos, and launch preferences.",
+    "reassure": "Final content, images, and business details will be confirmed before launch."
+  },
+  "visibility": {
+    "claims": true,
+    "services": true,
+    "projects": true,
+    "process": true,
+    "reviews": true,
+    "serviceAreaChips": true
+  },
+  "metadata": {
+    "createdAt": "2026-10-15T12:00:00.000Z",
+    "updatedAt": "2026-10-15T12:00:00.000Z",
+    "notes": "QA-gate test record (populated honest-copy path). Test data only — never outreach. Claims/projects/reviews are shaped like real data to exercise the visible-path checks in scripts/qa-preview.js.",
+    "flags": [
+      "test-fixture",
+      "qa-gate"
+    ]
+  }
+}

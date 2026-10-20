@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Preview Site Wizard — internal tool</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Karla:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/wizard.css">
+</head>
+<body>
+  <header class="wiz-header">
+    <div class="wiz-header__inner">
+      <span class="wiz-header__mark"><span class="wiz-header__glyph" aria-hidden="true">&#9707;</span>Preview Site Wizard</span>
+      <span class="wiz-header__tag">internal tool &middot; honest copy only</span>
+    </div>
+  </header>
+
+  <main class="wiz-main">
+    <!-- Steps indicator -->
+    <ol class="wiz-steps" id="wiz-steps" aria-label="Wizard steps">
+      <li class="wiz-step is-current" data-step-nav="0"><span class="wiz-step__num">1</span><span class="wiz-step__label">Business Basics</span></li>
+      <li class="wiz-step" data-step-nav="1"><span class="wiz-step__num">2</span><span class="wiz-step__label">Services &amp; Positioning</span></li>
+      <li class="wiz-step" data-step-nav="2"><span class="wiz-step__num">3</span><span class="wiz-step__label">Images</span></li>
+      <li class="wiz-step" data-step-nav="3"><span class="wiz-step__num">4</span><span class="wiz-step__label">Location &amp; Contact</span></li>
+      <li class="wiz-step" data-step-nav="4"><span class="wiz-step__num">5</span><span class="wiz-step__label">Offer &amp; Settings</span></li>
+      <li class="wiz-step" data-step-nav="5"><span class="wiz-step__num">6</span><span class="wiz-step__label">Review &amp; Generate</span></li>
+    </ol>
+
+    <form class="wiz-form" id="wizard-form" novalidate>
+
+      <!-- STEP 1: Business Basics -->
+      <fieldset class="wiz-panel" data-step-panel="0">
+        <legend class="wiz-panel__title">Business Basics</legend>
+        <p class="wiz-panel__hint">The four required fields are all that is needed to generate a preview. Everything else has safe defaults.</p>
+
+        <div class="wiz-import">
+          <div class="wiz-import__row">
+            <label class="wiz-import__label" for="f-csvFile">Import from CSV</label>
+            <input type="file" id="f-csvFile" accept=".csv,text/csv" class="wiz-import__file">
+          </div>
+          <p class="wiz-import__note">Optional prefill from a <code>docs/preview-site-input-template.csv</code> row. Importing replaces current form values with the row&rsquo;s data; asset URL columns are stored as operator notes only.</p>
+          <p class="wiz-import__msg" id="wiz-import-msg" hidden></p>
+        </div>
+
+        <div class="wiz-field" data-field="businessName">
+          <label for="f-businessName">Business name <span class="wiz-req" aria-hidden="true">*</span></label>
+          <input id="f-businessName" name="businessName" type="text" autocomplete="organization" required aria-required="true">
+          <p class="wiz-error" data-error-for="businessName" hidden></p>
+        </div>
+
+        <div class="wiz-grid">
+          <div class="wiz-field" data-field="city">
+            <label for="f-city">City <span class="wiz-req" aria-hidden="true">*</span></label>
+            <input id="f-city" name="city" type="text" autocomplete="address-level2" required aria-required="true">
+            <p class="wiz-error" data-error-for="city" hidden></p>
+          </div>
+          <div class="wiz-field" data-field="state">
+            <label for="f-state">State <span class="wiz-req" aria-hidden="true">*</span></label>
+            <input id="f-state" name="state" type="text" placeholder="OR" maxlength="20" autocomplete="address-level1" required aria-required="true">
+            <p class="wiz-error" data-error-for="state" hidden></p>
+          </div>
+          <div class="wiz-field" data-field="trade">
+            <label for="f-trade">Trade <span class="wiz-req" aria-hidden="true">*</span></label>
+            <input id="f-trade" name="trade" type="text" placeholder="remodeling" required aria-required="true">
+            <p class="wiz-error" data-error-for="trade" hidden></p>
+          </div>
+        </div>
+
+        <div class="wiz-field">
+          <label for="f-websiteUrl">Website URL <span class="wiz-opt">optional</span></label>
+          <input id="f-websiteUrl" name="websiteUrl" type="url" placeholder="https://">
+        </div>
+
+        <div class="wiz-field">
+          <label for="f-ownerName">Owner name <span class="wiz-opt">research only — not rendered</span></label>
+          <input id="f-ownerName" name="ownerName" type="text">
+        </div>
+
+        <div class="wiz-field">
+          <label for="f-notes">Notes <span class="wiz-opt">internal only</span></label>
+          <input id="f-notes" name="notes" type="text" placeholder="Operator/research notes">
+        </div>
+
+        <div class="wiz-field">
+          <label for="f-sourceUrl">Source URL <span class="wiz-opt">provenance</span></label>
+          <input id="f-sourceUrl" name="sourceUrl" type="url" placeholder="https://">
+        </div>
+      </fieldset>
+
+      <!-- STEP 2: Services & Positioning -->
+      <fieldset class="wiz-panel" data-step-panel="1" hidden>
+        <legend class="wiz-panel__title">Services &amp; Positioning</legend>
+        <p class="wiz-panel__hint">One service per line (or pipe-separated). Leave blank to use safe defaults for the trade.</p>
+
+        <div class="wiz-field">
+          <label for="f-services">Services <span class="wiz-opt">one per line or a|b|c</span></label>
+          <textarea id="f-services" name="services" rows="5" placeholder="Kitchen Remodeling&#10;Bathroom Remodeling&#10;Whole-Home Updates"></textarea>
+        </div>
+
+        <div class="wiz-field">
+          <label for="f-heroHeadline">Hero headline <span class="wiz-opt">default generated if blank</span></label>
+          <input id="f-heroHeadline" name="heroHeadline" type="text" placeholder="Roofing for Houston homeowners, done right.">
+        </div>
+
+        <div class="wiz-field">
+          <label for="f-heroLede">Hero lede <span class="wiz-opt">default generated if blank</span></label>
+          <textarea id="f-heroLede" name="heroLede" rows="3" placeholder="Clear communication, clean work, and a straightforward experience."></textarea>
+        </div>
+
+        <div class="wiz-field">
+          <label for="f-ctaCopy">Main CTA headline <span class="wiz-opt">default generated if blank</span></label>
+          <input id="f-ctaCopy" name="ctaCopy" type="text" placeholder="Ready to talk about your roof?">
+        </div>
+
+        <div class="wiz-field">
+          <label for="f-positioningNotes">Positioning notes <span class="wiz-opt">internal — stored in metadata</span></label>
+          <textarea id="f-positioningNotes" name="positioningNotes" rows="2" placeholder="How they want to be positioned; NOT rendered copy"></textarea>
+        </div>
+      </fieldset>
+
+      <!-- STEP 3: Images (JUS-52) — optional overrides. Blank URL ->
+           template default -> styled placeholder at render time. -->
+      <fieldset class="wiz-panel" data-step-panel="2" hidden>
+        <legend class="wiz-panel__title">Images</legend>
+        <p class="wiz-panel__hint">Optional. Leave everything blank to use template defaults (or styled placeholders) &mdash; nothing here blocks generation. URLs only; no uploads.</p>
+
+        <div class="wiz-imgslot">
+          <div class="wiz-field">
+            <label for="f-heroImageUrl">Hero image URL <span class="wiz-opt">hero media frame</span></label>
+            <input id="f-heroImageUrl" name="heroImageUrl" type="url" placeholder="https://&hellip;">
+          </div>
+          <details class="wiz-imgslot__alt">
+            <summary>Alt text <span class="wiz-opt">safe default used if blank</span></summary>
+            <div class="wiz-field">
+              <input id="f-heroImageAlt" name="heroImageAlt" type="text" placeholder="Home remodeling inspiration image">
+            </div>
+          </details>
+        </div>
+
+        <div class="wiz-imgslot">
+          <div class="wiz-field">
+            <label for="f-projectFeaturedImageUrl">Featured project image URL <span class="wiz-opt">projects collage &middot; first slot</span></label>
+            <input id="f-projectFeaturedImageUrl" name="projectFeaturedImageUrl" type="url" placeholder="https://&hellip;">
+          </div>
+          <details class="wiz-imgslot__alt">
+            <summary>Alt text <span class="wiz-opt">safe default used if blank</span></summary>
+            <div class="wiz-field">
+              <input id="f-projectFeaturedImageAlt" name="projectFeaturedImageAlt" type="text" placeholder="Home remodeling inspiration image">
+            </div>
+          </details>
+        </div>
+
+        <div class="wiz-imgslot">
+          <div class="wiz-field">
+            <label for="f-projectKitchenImageUrl">Kitchen image URL <span class="wiz-opt">projects collage</span></label>
+            <input id="f-projectKitchenImageUrl" name="projectKitchenImageUrl" type="url" placeholder="https://&hellip;">
+          </div>
+          <details class="wiz-imgslot__alt">
+            <summary>Alt text <span class="wiz-opt">safe default used if blank</span></summary>
+            <div class="wiz-field">
+              <input id="f-projectKitchenImageAlt" name="projectKitchenImageAlt" type="text" placeholder="Kitchen remodeling inspiration image">
+            </div>
+          </details>
+        </div>
+
+        <div class="wiz-imgslot">
+          <div class="wiz-field">
+            <label for="f-projectBathImageUrl">Bathroom image URL <span class="wiz-opt">projects collage</span></label>
+            <input id="f-projectBathImageUrl" name="projectBathImageUrl" type="url" placeholder="https://&hellip;">
+          </div>
+          <details class="wiz-imgslot__alt">
+            <summary>Alt text <span class="wiz-opt">safe default used if blank</span></summary>
+            <div class="wiz-field">
+              <input id="f-projectBathImageAlt" name="projectBathImageAlt" type="text" placeholder="Bathroom remodeling inspiration image">
+            </div>
+          </details>
+        </div>
+
+        <div class="wiz-imgslot">
+          <div class="wiz-field">
+            <label for="f-projectWholeHomeImageUrl">Whole-home image URL <span class="wiz-opt">projects collage</span></label>
+            <input id="f-projectWholeHomeImageUrl" name="projectWholeHomeImageUrl" type="url" placeholder="https://&hellip;">
+          </div>
+          <details class="wiz-imgslot__alt">
+            <summary>Alt text <span class="wiz-opt">safe default used if blank</span></summary>
+            <div class="wiz-field">
+              <input id="f-projectWholeHomeImageAlt" name="projectWholeHomeImageAlt" type="text" placeholder="Whole-home remodeling inspiration image">
+            </div>
+          </details>
+        </div>
+
+        <p class="wiz-imgslot__note">Alt text stays generic (&ldquo;inspiration image&rdquo;) unless it really is this business&rsquo;s photo &mdash; never imply a pictured project was completed by them.</p>
+      </fieldset>
+
+      <!-- STEP 4: Location & Contact -->
+      <fieldset class="wiz-panel" data-step-panel="3" hidden>
+        <legend class="wiz-panel__title">Location &amp; Contact</legend>
+        <p class="wiz-panel__hint">Contact fields stay private unless the preview renders them; research-only fields are never rendered by default.</p>
+
+        <div class="wiz-grid">
+          <div class="wiz-field">
+            <label for="f-phone">Phone <span class="wiz-opt">recommended</span></label>
+            <input id="f-phone" name="phone" type="tel" placeholder="541-555-0198">
+          </div>
+          <div class="wiz-field">
+            <label for="f-email">Email <span class="wiz-opt">maps to business.email</span></label>
+            <input id="f-email" name="email" type="email">
+          </div>
+        </div>
+
+        <div class="wiz-field">
+          <label for="f-serviceAreas">Service areas <span class="wiz-opt">one per line or a|b|c</span></label>
+          <textarea id="f-serviceAreas" name="serviceAreas" rows="3" placeholder="Bend&#10;Redmond&#10;Sisters"></textarea>
+        </div>
+
+        <div class="wiz-field">
+          <label for="f-address">Address <span class="wiz-opt">research only — not rendered</span></label>
+          <input id="f-address" name="address" type="text">
+        </div>
+
+        <div class="wiz-field">
+          <label for="f-businessHours">Business hours <span class="wiz-opt">research only — not rendered</span></label>
+          <input id="f-businessHours" name="businessHours" type="text" placeholder="Mon–Fri 8–5">
+        </div>
+
+        <div class="wiz-field">
+          <label for="f-licenseNumber">License number <span class="wiz-opt">store-only until verified</span></label>
+          <input id="f-licenseNumber" name="licenseNumber" type="text">
+        </div>
+      </fieldset>
+
+      <!-- STEP 5: Offer & Settings -->
+      <fieldset class="wiz-panel" data-step-panel="4" hidden>
+        <legend class="wiz-panel__title">Preview Offer &amp; Settings</legend>
+        <p class="wiz-panel__hint">Internal generation context. Campaign data is deliberately not part of this wizard.</p>
+
+        <div class="wiz-grid">
+          <div class="wiz-field">
+            <label for="f-templateId">Template</label>
+            <select id="f-templateId" name="templateId">
+              <option value="remodeling-contractor-v1" selected>remodeling-contractor-v1</option>
+            </select>
+          </div>
+          <div class="wiz-field">
+            <label for="f-status">Status on generate</label>
+            <select id="f-status" name="status">
+              <option value="needs_review" selected>needs_review (auto: warnings present)</option>
+              <option value="ready">ready</option>
+            </select>
+            <p class="wiz-note">Auto-resolves to blocked when required fields are missing; ready requires complete recommended data.</p>
+          </div>
+        </div>
+
+        <div class="wiz-grid">
+          <div class="wiz-field">
+            <label for="f-primaryCta">Primary CTA label</label>
+            <input id="f-primaryCta" name="primaryCta" type="text" value="Request a Free Estimate">
+          </div>
+          <div class="wiz-field">
+            <label for="f-secondaryCta">Secondary CTA label</label>
+            <input id="f-secondaryCta" name="secondaryCta" type="text" value="Ask a Question">
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- STEP 6: Review & Generate -->
+      <fieldset class="wiz-panel" data-step-panel="5" hidden>
+        <legend class="wiz-panel__title">Review &amp; Generate</legend>
+        <p class="wiz-panel__hint">What will be generated. Required-field problems block generation until fixed.</p>
+
+        <div class="wiz-review" id="wiz-review" aria-live="polite"></div>
+
+        <div class="wiz-actions-final">
+          <button type="button" class="wiz-btn wiz-btn--primary" id="btn-generate">Generate Preview Record</button>
+          <button type="button" class="wiz-btn wiz-btn--ghost" id="btn-reset">Reset Wizard</button>
+        </div>
+
+        <div class="wiz-result" id="wiz-result" hidden>
+          <p class="wiz-result__head">Record generated</p>
+          <dl class="wiz-result__meta">
+            <dt>Internal id</dt><dd id="res-id"></dd>
+            <dt>Public slug</dt><dd id="res-slug"></dd>
+            <dt>Status</dt><dd id="res-status"></dd>
+          </dl>
+          <p class="wiz-result__url" id="res-url"></p>
+          <div class="wiz-result__actions">
+            <button type="button" class="wiz-btn" id="btn-download">Download JSON</button>
+            <button type="button" class="wiz-btn" id="btn-new">Generate Another</button>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Step navigation (shared) -->
+      <div class="wiz-nav">
+        <button type="button" class="wiz-btn wiz-btn--ghost" id="btn-back" hidden>&larr; Back</button>
+        <div class="wiz-nav__spacer"></div>
+        <button type="button" class="wiz-btn wiz-btn--ghost" id="btn-skip" hidden>Skip to Review &rarr;</button>
+        <button type="button" class="wiz-btn wiz-btn--primary" id="btn-next">Continue &rarr;</button>
+      </div>
+    </form>
+  </main>
+
+  <script src="../js/preview-image-defaults.js"></script>
+  <script src="js/wizard-core.js"></script>
+  <script src="js/wizard-store.js"></script>
+  <script src="js/wizard-app.js"></script>
+</body>
+</html>
